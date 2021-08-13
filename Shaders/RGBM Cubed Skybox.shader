@@ -1,4 +1,6 @@
-﻿Shader "Skybox/RGBM Cubed Skybox"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Skybox/RGBM Cubed Skybox"
 {
     Properties
     {
@@ -44,7 +46,7 @@
     {
         v2f o;
         float4 p = mul(MakeRotationMatrix(), v.position);
-        o.position = mul(UNITY_MATRIX_MVP, p);
+        o.position = UnityObjectToClipPos(p);
         o.texcoord = v.texcoord;
         return o;
     }
